@@ -2,6 +2,17 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import { ArrowRight, Leaf, Truck, Sun, Menu, X } from "lucide-react";
+import Shiitake from '../public/shitake_mushroom.webp'
+import Oyster from '../public/american_oyester_mushroom.webp'
+import Portobello from '../public/portobello_mushrrom.webp'
+import Image from "next/image";
+
+
+const mushroomImages = {
+  Shiitake,
+  Oyster,
+  Portobello
+};
 
 const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -177,6 +188,7 @@ const LandingPage = () => {
           </section>
 
           <section id="products" className="bg-gray-100 py-16">
+
             <div className="container mx-auto">
               <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">
                 Our Organic Mushroom Products
@@ -187,10 +199,11 @@ const LandingPage = () => {
                     key={mushroom}
                     className="bg-white rounded-lg shadow-md overflow-hidden"
                   >
-                    <img
-                      src={`/images/${mushroom.toLowerCase()}-mushrooms.jpg`}
+                    <Image
+                      src={mushroomImages[mushroom]}
                       alt={`Fresh organic ${mushroom} mushrooms from SP Harvest`}
-                      className="w-full h-48 object-cover"
+                      sizes="100vw"
+                      style={{ height: '325px' }} // optional
                     />
                     <div className="p-4">
                       <h3 className="text-xl font-semibold mb-2 text-gray-900">
