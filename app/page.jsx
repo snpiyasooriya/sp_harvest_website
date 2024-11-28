@@ -37,14 +37,14 @@ const LandingPage = () => {
   return (
     <>
       <Head>
-        <title>SP Harvest - Premium Organic Mushrooms in Koswatta, Sri Lanka | Best Quality Mushroom Farm</title>
+        <title>SP Harvest - Premium Organic Mushrooms | Paluwalgala Road, Koswatta, Nattandiya</title>
         <meta name="description"
-              content="SP Harvest is Sri Lanka's leading organic mushroom farm located in Koswatta. We offer premium Shiitake, Oyster, and Portobello mushrooms grown sustainably in the perfect climate of Sri Lanka. Buy fresh, locally grown mushrooms today!"/>
+              content="SP Harvest is Sri Lanka&apos;s leading organic mushroom farm located on Paluwalgala Road, Koswatta, Nattandiya. We offer premium Shiitake, Oyster, and Portobello mushrooms grown sustainably in the perfect climate of Sri Lanka. Buy fresh, locally grown mushrooms today!"/>
         <meta name="keywords"
-              content="organic mushrooms Koswatta, SP Harvest, Shiitake mushrooms Sri Lanka, Oyster mushrooms Koswatta, Portobello mushrooms, sustainable farming Sri Lanka, farm-to-table Sri Lanka, fresh mushrooms Koswatta, best mushroom farm Sri Lanka, buy organic mushrooms Thalangama"/>
-        <meta property="og:title" content="SP Harvest - Premium Organic Mushroom Farm in Koswatta"/>
+              content="organic mushrooms Koswatta, SP Harvest Paluwalgala Road, Shiitake mushrooms Nattandiya, Oyster mushrooms Koswatta, Portobello mushrooms, sustainable farming Sri Lanka, farm-to-table Koswatta, fresh mushrooms Paluwalgala Road, best mushroom farm Nattandiya, buy organic mushrooms Sri Lanka"/>
+        <meta property="og:title" content="SP Harvest - Premium Organic Mushroom Farm | Paluwalgala Road, Koswatta, Nattandiya"/>
         <meta property="og:description"
-              content="Discover Sri Lanka's finest organic mushrooms from SP Harvest in Koswatta. We grow premium Shiitake, Oyster, and Portobello varieties in our state-of-the-art farm. Order fresh, locally grown mushrooms today!"/>
+              content="Discover Sri Lanka&apos;s finest organic mushrooms from SP Harvest on Paluwalgala Road, Koswatta, Nattandiya. We grow premium Shiitake, Oyster, and Portobello varieties in our state-of-the-art farm. Order fresh, locally grown mushrooms today!"/>
         <meta property="og:image" content="https://www.spharvest.com/images/organic-mushrooms-sp-harvest.jpg"/>
         <meta name="twitter:card" content="summary_large_image"/>
         <meta name="geo.region" content="LK"/>
@@ -109,7 +109,7 @@ const LandingPage = () => {
             <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
             <div className="container mx-auto text-center relative z-1 px-4">
               <h1 className="text-5xl font-bold mb-6 leading-tight">
-                Sri Lanka's Premium <span className="text-green-200">Organic Mushrooms</span>
+                Sri Lanka&apos;s Premium <span className="text-green-200">Organic Mushrooms</span>
               </h1>
               <p className="text-xl mb-10 text-green-100 max-w-2xl mx-auto">
                 Experience the finest locally grown organic mushrooms from SP Harvest. 
@@ -118,7 +118,7 @@ const LandingPage = () => {
               <div className="flex justify-center items-center space-x-6 mb-10">
                 <div className="flex items-center">
                   <MapPin className="w-5 h-5 text-green-200 mr-2" />
-                  <span>Koswatta, Sri Lanka</span>
+                  <span>Paluwalgala Road, Koswatta, Nattandiya</span>
                 </div>
                 <div className="flex items-center">
                   <Phone className="w-5 h-5 text-green-200 mr-2" />
@@ -198,17 +198,20 @@ const LandingPage = () => {
                     description: "Large, meaty Portobello mushrooms grown in our Sri Lankan facilities.",
                     price: "Rs. 1000/250g"
                   }
-                ].map((mushroom) => (
+                ].map((mushroom, index) => (
                   <article
                     key={mushroom.name}
                     className="group bg-white rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300"
                   >
-                    <div className="relative h-64">
+                    <div className="relative h-64 w-full">
                       <Image
                         src={mushroomImages[mushroom.name]}
                         alt={`Fresh ${mushroom.name} mushrooms from SP Harvest Sri Lanka`}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        priority={index === 0}
                         className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        quality={85}
                       />
                     </div>
                     <div className="p-6">
@@ -216,7 +219,7 @@ const LandingPage = () => {
                       <p className="text-gray-600 mb-4">{mushroom.description}</p>
                       <p className="text-green-700 font-semibold">{mushroom.price}</p>
                       <a
-                        href={`https://wa.me/94776983904?text=I'm interested in ${mushroom.name} mushrooms`}
+                        href={`https://wa.me/94776983904?text=I&apos;m interested in ${mushroom.name} mushrooms`}
                         className="mt-4 inline-flex items-center text-green-700 hover:text-green-800 transition-colors"
                       >
                         Order via WhatsApp
@@ -240,8 +243,9 @@ const LandingPage = () => {
                     <h3 className="text-2xl font-semibold mb-4">Visit Our Farm</h3>
                     <p className="text-gray-600 mb-4">
                       SP Harvest Organic Mushroom Farm<br />
+                      Paluwalgala Road<br />
                       Koswatta<br />
-                      Thalangama<br />
+                      Nattandiya<br />
                       Sri Lanka
                     </p>
                     <div className="space-y-2">
