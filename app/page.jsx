@@ -1,12 +1,11 @@
 'use client'
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import { ArrowRight, Leaf, Truck, Sun, Menu, X } from "lucide-react";
+import { ArrowRight, Leaf, Truck, Sun, Menu, X, MapPin, Phone } from "lucide-react";
 import Shiitake from '../public/shitake_mushroom.webp'
 import Oyster from '../public/american_oyester_mushroom.webp'
 import Portobello from '../public/portobello_mushrrom.webp'
 import Image from "next/image";
-
 
 const mushroomImages = {
   Shiitake,
@@ -38,192 +37,190 @@ const LandingPage = () => {
   return (
     <>
       <Head>
-        <title>SP Harvest - Premium Organic Mushrooms | Sustainably Grown in SRI LANKA</title>
+        <title>SP Harvest - Premium Organic Mushrooms in Koswatta, Sri Lanka | Best Quality Mushroom Farm</title>
         <meta name="description"
-              content="SP Harvest offers fresh, sustainably grown organic mushrooms. Discover our premium Shiitake, Oyster, and Portobello varieties. Order now for farm-to-table freshness!"/>
+              content="SP Harvest is Sri Lanka's leading organic mushroom farm located in Koswatta. We offer premium Shiitake, Oyster, and Portobello mushrooms grown sustainably in the perfect climate of Sri Lanka. Buy fresh, locally grown mushrooms today!"/>
         <meta name="keywords"
-              content="organic mushrooms, SP Harvest, Shiitake, Oyster, Portobello, sustainable farming, farm-to-table"/>
-        <meta property="og:title" content="SP Harvest - Premium Organic Mushrooms | Sustainably Grown"/>
+              content="organic mushrooms Koswatta, SP Harvest, Shiitake mushrooms Sri Lanka, Oyster mushrooms Koswatta, Portobello mushrooms, sustainable farming Sri Lanka, farm-to-table Sri Lanka, fresh mushrooms Koswatta, best mushroom farm Sri Lanka, buy organic mushrooms Thalangama"/>
+        <meta property="og:title" content="SP Harvest - Premium Organic Mushroom Farm in Koswatta"/>
         <meta property="og:description"
-              content="Discover fresh, sustainably grown organic mushrooms from SP Harvest. Premium Shiitake, Oyster, and Portobello varieties available for farm-to-table freshness."/>
+              content="Discover Sri Lanka's finest organic mushrooms from SP Harvest in Koswatta. We grow premium Shiitake, Oyster, and Portobello varieties in our state-of-the-art farm. Order fresh, locally grown mushrooms today!"/>
         <meta property="og:image" content="https://www.spharvest.com/images/organic-mushrooms-sp-harvest.jpg"/>
         <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="geo.region" content="LK"/>
+        <meta name="geo.placename" content="Koswatta"/>
         <link rel="canonical" href="https://www.spharvest.com"/>
+        <link rel="alternate" hreflang="en" href="https://www.spharvest.com"/>
+        <link rel="alternate" hreflang="si" href="https://www.spharvest.com/si"/>
+        <link rel="alternate" hreflang="ta" href="https://www.spharvest.com/ta"/>
       </Head>
 
-      <div className="min-h-screen bg-gray-50">
-        <header className="bg-green-700 text-white p-4 fixed w-full z-10">
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
+        <header className="bg-gradient-to-r from-green-800 to-green-600 text-white p-4 fixed w-full z-10 backdrop-blur-sm bg-opacity-95 shadow-lg">
           <div className="container mx-auto flex justify-between items-center">
-            <h1 className="text-2xl font-bold">
+            <h1 className="text-3xl font-bold tracking-tight">
               <a
                   href="/"
                   title="SP Harvest - Organic Mushroom Farm"
-                  className="text-white"
+                  className="text-white hover:text-green-100 transition-colors duration-300"
               >
                 SP Harvest
               </a>
             </h1>
             <nav
                 aria-label="Main navigation"
-                className={`${isMenuOpen ? "flex flex-col absolute top-full left-0 right-0 bg-green-700 p-4 shadow-md" : "hidden"} justify-between md:flex md:items-center md:space-x-4`}
+                className={`${
+                  isMenuOpen 
+                    ? "flex flex-col absolute top-full left-0 right-0 bg-gradient-to-r from-green-800 to-green-600 p-6 shadow-lg backdrop-blur-sm bg-opacity-95 transition-all duration-300 ease-in-out" 
+                    : "hidden"
+                } justify-between md:flex md:items-center md:space-x-8`}
             >
-              <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                <li>
-                  <a
+              <ul className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-8">
+                {["Home", "About", "Products", "Contact"].map((item) => (
+                  <li key={item}>
+                    <a
                       onClick={() => setIsMenuOpen(false)}
-                      href="#home"
-                      className="hover:underline text-white transition-all transition-duration: 150ms  ease-in-out"
-                  >
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a
-                    onClick={() => setIsMenuOpen(false)}
-                    href="#about"
-                    className="hover:underline text-white transition-all duration-500 ease-in-out"
-                  >
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a
-                    onClick={() => setIsMenuOpen(false)}
-                    href="#products"
-                    className="hover:underline text-white transition-all duration-500 ease-in-out"
-                  >
-                    Products
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#contact"
-                    className="hover:underline text-white transition-all duration-500 ease-in-out"
-                  >
-                    Contact
-                  </a>
-                </li>
+                      href={`#${item.toLowerCase()}`}
+                      className="text-lg hover:text-green-200 transition-all duration-300 ease-in-out relative group"
+                    >
+                      {item}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-200 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                  </li>
+                ))}
               </ul>
             </nav>
             <button
-              className="text-white md:hidden"
+              className="text-white md:hidden hover:text-green-200 transition-colors duration-300"
               onClick={toggleMenu}
               aria-label="Toggle menu"
             >
               {isMenuOpen ? (
-                <X size={24} aria-hidden="true" />
+                <X size={28} aria-hidden="true" />
               ) : (
-                <Menu size={24} aria-hidden="true" />
+                <Menu size={28} aria-hidden="true" />
               )}
             </button>
           </div>
         </header>
 
         <main>
-          <section id="home" className="bg-green-600 text-white py-40">
-            <div className="container mx-auto text-center">
-              <h2 className="text-4xl font-bold mb-4">
-                Discover the Magic of Organic Mushrooms
-              </h2>
-              <p className="text-xl mb-8">
-                Sustainably grown, deliciously fresh organic mushrooms from SP
-                Harvest
+          <section id="home" className="relative bg-gradient-to-b from-green-700 via-green-600 to-green-500 text-white py-48">
+            <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
+            <div className="container mx-auto text-center relative z-1 px-4">
+              <h1 className="text-5xl font-bold mb-6 leading-tight">
+                Sri Lanka's Premium <span className="text-green-200">Organic Mushrooms</span>
+              </h1>
+              <p className="text-xl mb-10 text-green-100 max-w-2xl mx-auto">
+                Experience the finest locally grown organic mushrooms from SP Harvest. 
+                Sustainably cultivated in the perfect climate of Sri Lanka.
               </p>
+              <div className="flex justify-center items-center space-x-6 mb-10">
+                <div className="flex items-center">
+                  <MapPin className="w-5 h-5 text-green-200 mr-2" />
+                  <span>Koswatta, Sri Lanka</span>
+                </div>
+                <div className="flex items-center">
+                  <Phone className="w-5 h-5 text-green-200 mr-2" />
+                  <a href="tel:+94776983904" className="hover:text-green-200 transition-colors">+94 77 698 3904</a>
+                </div>
+              </div>
               <a
                 href="#products"
-                className="bg-white text-green-600 px-6 py-2 rounded-full font-semibold hover:bg-green-100 transition duration-300"
+                className="inline-flex items-center bg-white text-green-700 px-8 py-3 rounded-full font-semibold hover:bg-green-50 transition-all duration-300 transform hover:scale-105 shadow-lg group"
               >
-                Explore Our Organic Mushroom Products
+                Explore Our Products
+                <ArrowRight className="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
             </div>
           </section>
 
-          <section id="about" className="py-16">
-            <div className="container mx-auto">
-              <h2 className="text-3xl font-bold text-green-700 text-center mb-8">
-                About SP Harvest Organic Mushroom Farm
+          <section id="about" className="py-24 bg-white">
+            <div className="container mx-auto px-4">
+              <h2 className="text-4xl font-bold text-gray-800 text-center mb-16">
+                Why Choose <span className="text-green-700">SP Harvest</span>
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="text-center">
-                  <Leaf
-                    className="mx-auto text-green-600 mb-4"
-                    size={48}
-                    aria-hidden="true"
-                  />
-                  <h3 className="text-xl font-semibold mb-2 text-green-700">
-                    Sustainable Organic Farming
-                  </h3>
-                  <p className="text-gray-700">
-                    We use eco-friendly practices to grow our organic mushrooms.
-                  </p>
-                </div>
-                <div className="text-center">
-                  <Truck
-                    className="mx-auto text-green-600 mb-4"
-                    size={48}
-                    aria-hidden="true"
-                  />
-                  <h3 className="text-xl font-semibold mb-2 text-green-700">
-                    Fresh Farm-to-Table Delivery
-                  </h3>
-                  <p className="text-gray-700">
-                    From our organic farm to your table in record time.
-                  </p>
-                </div>
-                <div className="text-center">
-                  <Sun
-                    className="mx-auto text-green-600 mb-4"
-                    size={48}
-                    aria-hidden="true"
-                  />
-                  <h3 className="text-xl font-semibold mb-2 text-green-700">
-                    Quality Guaranteed Organic Mushrooms
-                  </h3>
-                  <p className="text-gray-700">
-                    We ensure the highest quality in every organic mushroom.
-                  </p>
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                {[
+                  {
+                    icon: Leaf,
+                    title: "Local Sustainable Farming",
+                    description: "Our mushrooms are grown using eco-friendly practices in Sri Lanka's perfect climate conditions."
+                  },
+                  {
+                    icon: Truck,
+                    title: "Island-wide Delivery",
+                    description: "Fresh delivery across Sri Lanka, from our farm to your doorstep within hours."
+                  },
+                  {
+                    icon: Sun,
+                    title: "Sri Lankan Quality",
+                    description: "Certified organic mushrooms grown to the highest standards in our local facilities."
+                  }
+                ].map((item, index) => (
+                  <div key={index} className="text-center p-8 rounded-2xl hover:shadow-xl transition-all duration-300 bg-gray-50 group hover:-translate-y-2">
+                    <item.icon
+                      className="mx-auto text-green-600 mb-6 group-hover:scale-110 transition-transform duration-300"
+                      size={56}
+                      aria-hidden="true"
+                    />
+                    <h3 className="text-2xl font-semibold mb-4 text-gray-800">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </section>
 
-          <section id="products" className="bg-gray-100 py-16">
-
-            <div className="container mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">
-                Our Organic Mushroom Products
+          <section id="products" className="py-24 bg-gradient-to-b from-gray-50 to-white">
+            <div className="container mx-auto px-4">
+              <h2 className="text-4xl font-bold text-center mb-16 text-gray-800">
+                Our Premium <span className="text-green-700">Local Mushroom Selection</span>
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {["Shiitake", "Oyster", "Portobello"].map((mushroom) => (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                {[
+                  {
+                    name: "Shiitake",
+                    description: "Premium quality Shiitake mushrooms, grown in controlled environments in Sri Lanka.",
+                    price: "Rs. 1200/250g"
+                  },
+                  {
+                    name: "Oyster",
+                    description: "Fresh local Oyster mushrooms, perfect for Sri Lankan cuisine.",
+                    price: "Rs. 800/250g"
+                  },
+                  {
+                    name: "Portobello",
+                    description: "Large, meaty Portobello mushrooms grown in our Sri Lankan facilities.",
+                    price: "Rs. 1000/250g"
+                  }
+                ].map((mushroom) => (
                   <article
-                    key={mushroom}
-                    className="bg-white rounded-lg shadow-md overflow-hidden"
+                    key={mushroom.name}
+                    className="group bg-white rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300"
                   >
-                    <Image
-                      src={mushroomImages[mushroom]}
-                      alt={`Fresh organic ${mushroom} mushrooms from SP Harvest`}
-                      sizes="100vw"
-                      style={{ height: '325px' }} // optional
-                    />
-                    <div className="p-4">
-                      <h3 className="text-xl font-semibold mb-2 text-gray-900">
-                        Organic {mushroom} Mushrooms
-                      </h3>
-                      <p className="text-gray-700 mb-4">
-                        Fresh, organic {mushroom.toLowerCase()} mushrooms grown
-                        sustainably at SP Harvest.
-                      </p>
+                    <div className="relative h-64">
+                      <Image
+                        src={mushroomImages[mushroom.name]}
+                        alt={`Fresh ${mushroom.name} mushrooms from SP Harvest Sri Lanka`}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-2xl font-semibold text-gray-800 mb-2">{mushroom.name}</h3>
+                      <p className="text-gray-600 mb-4">{mushroom.description}</p>
+                      <p className="text-green-700 font-semibold">{mushroom.price}</p>
                       <a
-                        href={`/products/${mushroom.toLowerCase()}-mushrooms`}
-                        className="flex items-center text-green-600 font-semibold hover:underline"
+                        href={`https://wa.me/94776983904?text=I'm interested in ${mushroom.name} mushrooms`}
+                        className="mt-4 inline-flex items-center text-green-700 hover:text-green-800 transition-colors"
                       >
-                        Learn more about our organic {mushroom.toLowerCase()}{" "}
-                        mushrooms{" "}
-                        <ArrowRight
-                          className="ml-2"
-                          size={16}
-                          aria-hidden="true"
-                        />
+                        Order via WhatsApp
+                        <ArrowRight className="ml-2 w-4 h-4" />
                       </a>
                     </div>
                   </article>
@@ -232,69 +229,53 @@ const LandingPage = () => {
             </div>
           </section>
 
-          <section id="contact" className="py-16">
-            <div className="container mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">
-                Contact SP Harvest Organic Mushroom Farm
+          <section id="contact" className="py-24 bg-green-50">
+            <div className="container mx-auto px-4">
+              <h2 className="text-4xl font-bold text-center mb-16 text-gray-800">
+                Contact <span className="text-green-700">SP Harvest</span>
               </h2>
-              <form
-                className="max-w-lg mx-auto"
-                name="contact"
-                method="POST"
-                data-netlify="true"
-              >
-                <div className="mb-4">
-                  <label
-                    htmlFor="name"
-                    className="block text-gray-700 font-semibold mb-2"
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                    required
-                  />
+              <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg p-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-4">Visit Our Farm</h3>
+                    <p className="text-gray-600 mb-4">
+                      SP Harvest Organic Mushroom Farm<br />
+                      Koswatta<br />
+                      Thalangama<br />
+                      Sri Lanka
+                    </p>
+                    <div className="space-y-2">
+                      <a href="tel:+94776983904" className="flex items-center text-green-700 hover:text-green-800">
+                        <Phone className="w-5 h-5 mr-2" />
+                        +94 77 698 3904
+                      </a>
+                      <a href="https://wa.me/94776983904" className="flex items-center text-green-700 hover:text-green-800">
+                        <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                        WhatsApp Us
+                      </a>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-4">Business Hours</h3>
+                    <ul className="space-y-2 text-gray-600">
+                      <li className="flex justify-between">
+                        <span>Monday - Friday</span>
+                        <span>9:00 AM - 6:00 PM</span>
+                      </li>
+                      <li className="flex justify-between">
+                        <span>Saturday</span>
+                        <span>9:00 AM - 4:00 PM</span>
+                      </li>
+                      <li className="flex justify-between">
+                        <span>Sunday</span>
+                        <span>Closed</span>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-                <div className="mb-4">
-                  <label
-                    htmlFor="email"
-                    className="block text-gray-700 font-semibold mb-2"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                    required
-                  />
-                </div>
-                <div className="mb-4">
-                  <label
-                    htmlFor="message"
-                    className="block text-gray-700 font-semibold mb-2"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows="4"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                    required
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="bg-green-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition duration-300"
-                >
-                  Send Message
-                </button>
-              </form>
+              </div>
             </div>
           </section>
         </main>
