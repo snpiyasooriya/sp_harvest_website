@@ -14,10 +14,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://spharvest.com',
-    languages: {
-      'si': 'https://spharvest.com/si',
-      'ta': 'https://spharvest.com/ta',
-    },
+    // languages: {
+    //   'si': 'https://spharvest.com/si',
+    //   'ta': 'https://spharvest.com/ta',
+    // },
   },
 };
 
