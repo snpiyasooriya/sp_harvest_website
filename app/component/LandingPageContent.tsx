@@ -1,28 +1,45 @@
 'use client'
 import React, { useState, useEffect } from "react";
-import Head from "next/head";
-import { ArrowRight, Leaf, Truck, Sun, Menu, X, MapPin, Phone } from "lucide-react";
-import Shiitake from '../public/shitake_mushroom.webp'
-import Oyster from '../public/american_oyester_mushroom.webp'
-import Portobello from '../public/portobello_mushrrom.webp'
-import Image from "next/image";
+import { ArrowRight, Leaf, Truck, Sun, Menu, X, MapPin, Phone, LucideIcon } from "lucide-react";
+import Shiitake from '../../public/shitake_mushroom.webp'
+import Oyster from '../../public/american_oyester_mushroom.webp'
+import Portobello from '../../public/portobello_mushrrom.webp'
+import Image, { StaticImageData } from "next/image";
 
-const mushroomImages = {
+interface MushroomImages {
+  Shiitake: StaticImageData;
+  Oyster: StaticImageData;
+  Portobello: StaticImageData;
+}
+
+const mushroomImages: MushroomImages = {
   Shiitake,
   Oyster,
   Portobello
 };
 
-const LandingPage = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
+interface FeatureItem {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
 
-  const toggleMenu = () => {
+interface MushroomProduct {
+  name: keyof MushroomImages;
+  description: string;
+  price: string;
+}
+
+const LandingPage: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [isDesktop, setIsDesktop] = useState<boolean>(false);
+
+  const toggleMenu = (): void => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   useEffect(() => {
-    const handleResize = () => {
+    const handleResize = (): void => {
       setIsDesktop(window.innerWidth >= 768);
     };
 
@@ -34,27 +51,46 @@ const LandingPage = () => {
     };
   }, []);
 
+  const features: FeatureItem[] = [
+    {
+      icon: Leaf,
+      title: "Local Sustainable Farming",
+      description: "Our mushrooms are grown using eco-friendly practices in Sri Lanka's perfect climate conditions."
+    },
+    {
+      icon: Truck,
+      title: "Island-wide Delivery",
+      description: "Fresh delivery across Sri Lanka, from our farm to your doorstep within hours."
+    },
+    {
+      icon: Sun,
+      title: "Sri Lankan Quality",
+      description: "Certified organic mushrooms grown to the highest standards in our local facilities."
+    }
+  ];
+
+  const products: MushroomProduct[] = [
+    {
+      name: "Shiitake",
+      description: "Premium quality Shiitake mushrooms, grown in controlled environments in Sri Lanka.",
+      price: "Rs. 1200/250g"
+    },
+    {
+      name: "Oyster",
+      description: "Fresh local Oyster mushrooms, perfect for Sri Lankan cuisine.",
+      price: "Rs. 800/250g"
+    },
+    {
+      name: "Portobello",
+      description: "Large, meaty Portobello mushrooms grown in our Sri Lankan facilities.",
+      price: "Rs. 1000/250g"
+    }
+  ];
+
+  const menuItems: string[] = ["Home", "About", "Products", "Contact"];
+
   return (
     <>
-      <Head>
-        <title>SP Harvest - Premium Organic Mushrooms | Paluwalgala Road, Koswatta, Nattandiya</title>
-        <meta name="description"
-              content="SP Harvest is Sri Lanka&apos;s leading organic mushroom farm located on Paluwalgala Road, Koswatta, Nattandiya. We offer premium Shiitake, Oyster, and Portobello mushrooms grown sustainably in the perfect climate of Sri Lanka. Buy fresh, locally grown mushrooms today!"/>
-        <meta name="keywords"
-              content="organic mushrooms Koswatta, SP Harvest Paluwalgala Road, Shiitake mushrooms Nattandiya, Oyster mushrooms Koswatta, Portobello mushrooms, sustainable farming Sri Lanka, farm-to-table Koswatta, fresh mushrooms Paluwalgala Road, best mushroom farm Nattandiya, buy organic mushrooms Sri Lanka"/>
-        <meta property="og:title" content="SP Harvest - Premium Organic Mushroom Farm | Paluwalgala Road, Koswatta, Nattandiya"/>
-        <meta property="og:description"
-              content="Discover Sri Lanka&apos;s finest organic mushrooms from SP Harvest on Paluwalgala Road, Koswatta, Nattandiya. We grow premium Shiitake, Oyster, and Portobello varieties in our state-of-the-art farm. Order fresh, locally grown mushrooms today!"/>
-        <meta property="og:image" content="https://www.spharvest.com/images/organic-mushrooms-sp-harvest.jpg"/>
-        <meta name="twitter:card" content="summary_large_image"/>
-        <meta name="geo.region" content="LK"/>
-        <meta name="geo.placename" content="Koswatta"/>
-        <link rel="canonical" href="https://www.spharvest.com"/>
-        <link rel="alternate" hreflang="en" href="https://www.spharvest.com"/>
-        <link rel="alternate" hreflang="si" href="https://www.spharvest.com/si"/>
-        <link rel="alternate" hreflang="ta" href="https://www.spharvest.com/ta"/>
-      </Head>
-
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
         <header className="bg-gradient-to-r from-green-800 to-green-600 text-white p-4 fixed w-full z-10 backdrop-blur-sm bg-opacity-95 shadow-lg">
           <div className="container mx-auto flex justify-between items-center">
@@ -76,7 +112,7 @@ const LandingPage = () => {
                 } justify-between md:flex md:items-center md:space-x-8`}
             >
               <ul className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-8">
-                {["Home", "About", "Products", "Contact"].map((item) => (
+                {menuItems.map((item) => (
                   <li key={item}>
                     <a
                       onClick={() => setIsMenuOpen(false)}
@@ -112,7 +148,7 @@ const LandingPage = () => {
                 Sri Lanka&apos;s Premium <span className="text-green-200">Organic Mushrooms</span>
               </h1>
               <p className="text-xl mb-10 text-green-100 max-w-2xl mx-auto">
-                Experience the finest locally grown organic mushrooms from SP Harvest. 
+                Experience the finest locally grown organic mushrooms from SP Harvest.
                 Sustainably cultivated in the perfect climate of Sri Lanka.
               </p>
               <div className="flex justify-center items-center space-x-6 mb-10">
@@ -141,23 +177,7 @@ const LandingPage = () => {
                 Why Choose <span className="text-green-700">SP Harvest</span>
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                {[
-                  {
-                    icon: Leaf,
-                    title: "Local Sustainable Farming",
-                    description: "Our mushrooms are grown using eco-friendly practices in Sri Lanka's perfect climate conditions."
-                  },
-                  {
-                    icon: Truck,
-                    title: "Island-wide Delivery",
-                    description: "Fresh delivery across Sri Lanka, from our farm to your doorstep within hours."
-                  },
-                  {
-                    icon: Sun,
-                    title: "Sri Lankan Quality",
-                    description: "Certified organic mushrooms grown to the highest standards in our local facilities."
-                  }
-                ].map((item, index) => (
+                {features.map((item, index) => (
                   <div key={index} className="text-center p-8 rounded-2xl hover:shadow-xl transition-all duration-300 bg-gray-50 group hover:-translate-y-2">
                     <item.icon
                       className="mx-auto text-green-600 mb-6 group-hover:scale-110 transition-transform duration-300"
@@ -182,23 +202,7 @@ const LandingPage = () => {
                 Our Premium <span className="text-green-700">Local Mushroom Selection</span>
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-                {[
-                  {
-                    name: "Shiitake",
-                    description: "Premium quality Shiitake mushrooms, grown in controlled environments in Sri Lanka.",
-                    price: "Rs. 1200/250g"
-                  },
-                  {
-                    name: "Oyster",
-                    description: "Fresh local Oyster mushrooms, perfect for Sri Lankan cuisine.",
-                    price: "Rs. 800/250g"
-                  },
-                  {
-                    name: "Portobello",
-                    description: "Large, meaty Portobello mushrooms grown in our Sri Lankan facilities.",
-                    price: "Rs. 1000/250g"
-                  }
-                ].map((mushroom, index) => (
+                {products.map((mushroom, index) => (
                   <article
                     key={mushroom.name}
                     className="group bg-white rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300"
@@ -219,7 +223,7 @@ const LandingPage = () => {
                       <p className="text-gray-600 mb-4">{mushroom.description}</p>
                       <p className="text-green-700 font-semibold">{mushroom.price}</p>
                       <a
-                        href={`https://wa.me/94776983904?text=I&apos;m interested in ${mushroom.name} mushrooms`}
+                        href={`https://wa.me/94776983904?text=I'm interested in ${mushroom.name} mushrooms`}
                         className="mt-4 inline-flex items-center text-green-700 hover:text-green-800 transition-colors"
                       >
                         Order via WhatsApp
@@ -298,3 +302,4 @@ const LandingPage = () => {
 };
 
 export default LandingPage;
+

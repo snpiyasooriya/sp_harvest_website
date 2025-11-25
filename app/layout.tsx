@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -6,18 +7,23 @@ const geistSans = localFont({
   variable: "--font-geist-sans",
   weight: "100 900",
 });
+
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
 });
 
-export const metadata = {
-    title: "SP Harvest - Premium Organic Mushrooms | Sustainably Grown in SRI LANKA",
-    description: "SP Harvest offers fresh, sustainably grown organic mushrooms. Discover our premium Shiitake, Oyster, and Portobello varieties. Order now for farm-to-table freshness!",
+export const metadata: Metadata = {
+  title: "SP Harvest - Premium Organic Mushrooms | Sustainably Grown in SRI LANKA",
+  description: "SP Harvest offers fresh, sustainably grown organic mushrooms. Discover our premium Shiitake, Oyster, and Portobello varieties. Order now for farm-to-table freshness!",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en">
       <body
@@ -28,3 +34,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
