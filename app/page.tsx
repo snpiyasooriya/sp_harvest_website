@@ -8,15 +8,15 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'SP Harvest - Premium Organic Mushroom Farm',
     description: 'Discover Sri Lanka\'s finest organic mushrooms...',
-    images: ['https://www.spharvest.com/images/organic-mushrooms-sp-harvest.jpg'],
+    // images: ['https://www.spharvest.com/images/organic-mushrooms-sp-harvest.jpg'],
     locale: 'en_US',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://www.spharvest.com',
+    canonical: 'https://spharvest.com',
     languages: {
-      'si': 'https://www.spharvest.com/si',
-      'ta': 'https://www.spharvest.com/ta',
+      'si': 'https://spharvest.com/si',
+      'ta': 'https://spharvest.com/ta',
     },
   },
 };
