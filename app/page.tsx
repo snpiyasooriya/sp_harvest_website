@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import LandingPageContent from "./component/LandingPageContent";
 
 export const metadata: Metadata = {
-  title: 'SP Harvest - Premium Organic Mushrooms | Paluwalgala Road, Koswatta, Nattandiya',
-  description: 'SP Harvest is Sri Lanka\'s leading organic mushroom farm...',
+  title: 'SP Harvest - Premium Organic Mushrooms',
+  description: 'SP Harvest is Sri Lanka\'s leading organic mushroom farm. We Produce premium quality Shiitake, Oyster, and Portobello mushrooms.',
   keywords: ['organic mushrooms Koswatta', 'SP Harvest Paluwalgala Road', 'Shiitake mushrooms Nattandiya'],
   openGraph: {
     title: 'SP Harvest - Premium Organic Mushroom Farm',

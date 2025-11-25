@@ -94,7 +94,7 @@ const LandingPage: React.FC = () => {
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
         <header className="bg-gradient-to-r from-green-800 to-green-600 text-white p-4 fixed w-full z-10 backdrop-blur-sm bg-opacity-95 shadow-lg">
           <div className="container mx-auto flex justify-between items-center">
-            <h1 className="text-3xl font-bold tracking-tight">
+            <p className="text-3xl font-bold tracking-tight">
               <a
                   href="/"
                   title="SP Harvest - Organic Mushroom Farm"
@@ -102,7 +102,7 @@ const LandingPage: React.FC = () => {
               >
                 SP Harvest
               </a>
-            </h1>
+            </p>
             <nav
                 aria-label="Main navigation"
                 className={`${
